@@ -1,5 +1,5 @@
-import { Box, Button, TextField, Typography, styled } from '@mui/material'
-import React from 'react'
+import { Box, Button, Stack, Typography, styled } from '@mui/material'
+import { FormContainer, TextFieldElement } from 'react-hook-form-mui'
 
 export const RegisterForm = () => {
   const CustomButton = styled(Button)({
@@ -18,10 +18,14 @@ export const RegisterForm = () => {
       <Typography variant='h6' style={{ fontWeight: 'bold', fontFamily: 'Montserrat' }}>
         Sign Up
       </Typography>
-      <TextField label='Full name' />
-      <TextField label='Your email' />
-      <TextField label='Password' />
-      <CustomButton variant='contained'>Sign up</CustomButton>
+      <FormContainer defaultValues={{ email: '', name: '', password: '' }}>
+        <Stack spacing={3}>
+          <TextFieldElement label='Full name' name='name' required />
+          <TextFieldElement label='Your email' type='email' name='email' required />
+          <TextFieldElement label='Password' type='password' name='password' required />
+          <CustomButton variant='contained' type='submit'>Sign up</CustomButton>
+        </Stack>
+      </FormContainer>
       <Typography variant='caption' align='center'>
         By creating account You agree to the <CaptionText variant='caption'>Terms of use</CaptionText> and <CaptionText variant='caption'>Privacy Policy</CaptionText>
       </Typography>
