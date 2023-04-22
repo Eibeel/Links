@@ -1,16 +1,19 @@
 
-export const signUp = ({ name = '', email = '', password = '' }) => {
-  const baseURL = 'http://ec2-54-160-84-172.compute-1.amazonaws.com:3000'
-
-  fetch(baseURL, {
+export const signUp = async (name = '', email = '', password = '') => {
+  const baseURL = 'http://ec2-54-160-84-172.compute-1.amazonaws.com:3000/auth/singin'
+  const options = {
     method: 'POST',
-    body: {
-      name,
-      email,
-      password,
-      image: ''
-    }
-  })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: `{
+      "name":"${name}",
+      "email":"${email}",
+      "password":"${password}"
+    }`
+  }
+
+  const resp = await fetch(baseURL, options)
+  const data = await resp.json()
+  return data
 }

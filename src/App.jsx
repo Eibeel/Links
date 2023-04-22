@@ -1,23 +1,16 @@
 import { AppRouter } from './router/AppRouter'
 import { Wrapper } from './components/Wrapper'
 import './App.css'
+/* import { loginUser, signInUser } from './store/url/thunks'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux' */
 
 const App = () => {
-  useEffect(() => {
-    const baseURL = 'http://ec2-54-160-84-172.compute-1.amazonaws.com:3000/auth/login'
-
-    fetch(baseURL, {
-      method: 'POST',
-      body: {
-        email: 'hello@test.com',
-        password: '123456'
-      }
-    })
-      .then(resp => resp.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error))
-  }, [])
+  /*   const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(signInUser())
+      dispatch(loginUser('hello@test.com', '123456'))
+    }, []) */
 
   return (
     <Wrapper>
