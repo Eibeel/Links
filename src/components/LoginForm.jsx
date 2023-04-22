@@ -19,7 +19,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '18px', mt: 5, width: '320px' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', rowGap: '18px', mt: 5, width: '320px' }}>
       <Typography variant='h6' style={{ fontWeight: 'bold', fontFamily: 'Montserrat' }}>
         Login
       </Typography>

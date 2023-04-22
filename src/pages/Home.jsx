@@ -1,8 +1,11 @@
 import { Box, Button, Link, TextField, Typography, styled } from '@mui/material'
 import { Logo } from '../components'
 import { CardUrl } from './CardUrl'
+import { useSelector } from 'react-redux'
 
 export const Home = () => {
+  const { email, name } = useSelector(state => state.auth)
+
   const LogoutButton = styled(Button)({
     borderColor: '#007AFF',
     fontSize: '12px',
@@ -28,10 +31,10 @@ export const Home = () => {
       <Box mt='38px' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <img src='https://i.pravatar.cc/68' style={{ maxHeight: '68px', maxWidth: '68px', borderRadius: '100%' }} />
         <Typography sx={{ fontSize: '20px', marginTop: '12px' }}>
-          Hola mundo
+          {name}
         </Typography>
         <Typography mt='4px' sx={{ color: '#002239', fontWeight: '300', fontSize: '14px' }}>
-          helloworld@test.com
+          {email}
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '18px', marginTop: '36px', width: '320px' }}>
