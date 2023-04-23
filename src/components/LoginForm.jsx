@@ -1,10 +1,13 @@
 import { Box, Button, FormControl, Stack, TextField, Typography, styled } from '@mui/material'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../store/auth/thunks'
 import { Controller, useForm } from 'react-hook-form'
+import { readUrl } from '../store/url/thunks'
 
 export const LoginForm = () => {
   const dispatch = useDispatch()
+  const { token } = useSelector(state => state.auth)
+
   const { handleSubmit, control } = useForm({ defaultValues: { email: '', password: '' }, mode: 'onChange' })
 
   const CustomButton = styled(Button)({
@@ -16,6 +19,10 @@ export const LoginForm = () => {
 
   const onSubmit = ({ email, password }) => {
     dispatch(loginUser(email, password))
+  }
+
+  if (token.length > 1) {
+    dispatch(readUrl(token))
   }
 
   return (

@@ -1,5 +1,6 @@
 import { login, signUp } from '../../services'
-import { setUser } from './authSlice'
+import { deleteUrls } from '../url/urlSlice'
+import { logout, setUser } from './authSlice'
 
 export const loginUser = (emai = '', password = '') => {
   return async (dispatch) => {
@@ -20,5 +21,12 @@ export const signInUser = ({ name = '', email = '', password = '' }) => {
       const { data: { name, email } } = data
       dispatch(setUser({ email, name }))
     }
+  }
+}
+
+export const onLogout = () => {
+  return (dispatch) => {
+    dispatch(logout())
+    dispatch(deleteUrls())
   }
 }

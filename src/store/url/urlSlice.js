@@ -6,11 +6,14 @@ export const urlSlice = createSlice({
     urls: []
   },
   reducers: {
-    setUrl: (state, action) => {
-      state.urls = action.payload.urls
+    createUrls: (state, { payload }) => {
+      state.urls = payload.urls
+    },
+    deleteUrls (state) {
+      state.urls = []
     }
   }
 })
 
-export const { setUrl } = urlSlice.actions
+export const { createUrls, deleteUrls } = urlSlice.actions
 export default urlSlice.reducer
